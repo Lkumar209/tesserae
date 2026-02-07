@@ -1,16 +1,6 @@
 # Tesserae - Collaborative Pixel Art Mosaic
 
-A real-time collaborative pixel art application where multiple artists can create beautiful mosaics together.
-
-## Features
-
-- 🎨 **Real-time Collaboration** - Multiple users can draw simultaneously
-- 🖼️ **Multiple Themed Galleries** - Nature, Space, Abstract, and Societal Murals
-- ⏱️ **Time-lapse Replay** - Watch mosaics being created over time
-- 🤖 **AI Color Suggestions** - Groq AI suggests harmonious colors based on adjacent tiles
-- 🎯 **Variable Brush Sizes** - Paint with 1x1, 2x2, 3x3, or 4x4 pixel brushes
-- 🔥 **Heatmap View** - Visualize contributor activity
-- 🌟 **Glassmorphism UI** - Modern, beautiful interface with smooth animations
+Tesserae is a collaborative pixel art platform where artists come together to create beautiful mosaics in real-time. Jump into themed galleries like Nature, Space, or Abstract, grab a brush, and start painting—your tiles instantly appear for everyone else. The app uses Groq AI to suggest harmonious colors based on what's already been painted nearby, helping the mosaic flow naturally. You can watch time-lapse replays of entire artworks being built tile-by-tile, see contribution heatmaps showing where the action is, and switch between different brush sizes as you work. Built with React, Node.js, and Socket.io, it's designed around the idea that great art emerges when fragments come together.
 
 ## Tech Stack
 
@@ -111,4 +101,3 @@ MIT License - feel free to use this project for your portfolio or hackathon subm
 
 ---
 
-Built with ❤️ using Claude Code
