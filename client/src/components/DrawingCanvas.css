@@ -1,0 +1,152 @@
+.drawing-canvas-container {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.drawing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.drawing-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.close-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: #ff3838;
+}
+
+.drawing-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.pixel-canvas {
+  border: 2px solid #333;
+  cursor: crosshair;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.drawing-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.clear-btn,
+.save-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn {
+  background: #f1f1f1;
+  color: #333;
+}
+
+.clear-btn:hover {
+  background: #e0e0e0;
+}
+
+.save-btn {
+  background: #667eea;
+  color: white;
+  flex: 1;
+}
+
+.save-btn:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+.color-warning {
+  background: #fff3cd;
+  color: #856404;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ffeaa7;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.brush-size-selector {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.brush-size-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.brush-size-btn {
+  background: white;
+  border: 3px solid transparent;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brush-size-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.brush-size-btn.active {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #667eea;
+}
+
+.brush-preview {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+.brush-info {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
+}
