@@ -1,152 +1,200 @@
+/* ===== DRAWING CANVAS MODAL ===== */
+
 .drawing-canvas-container {
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 600px;
-  width: 100%;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  max-width: 900px;
+  width: 95%;
+  max-height: 95vh;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  margin: 0 !important;
 }
 
 .drawing-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .drawing-header h2 {
   margin: 0;
-  color: #333;
+  color: var(--color-text);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
-.close-btn {
-  background: #ff4757;
-  color: white;
-  border: none;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+.modal-close {
+  background: rgba(239, 68, 68, 0.2);
+  color: rgb(239, 68, 68);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-full);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-size: 1.5rem;
-  line-height: 1;
-  transition: background 0.2s;
+  transition: all var(--transition-base);
 }
 
-.close-btn:hover {
-  background: #ff3838;
+.modal-close:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.5);
+  transform: scale(1.1);
 }
 
 .drawing-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .drawing-content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+.canvas-section {
+  position: sticky;
+  top: 0;
 }
 
 .pixel-canvas {
-  border: 2px solid #333;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
   cursor: crosshair;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: white;
+  transition: all var(--transition-base);
+}
+
+.pixel-canvas:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.3);
 }
 
 .drawing-controls {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--space-4);
+  min-width: 300px;
+  width: 100%;
 }
+
+/* ===== ACTION BUTTONS ===== */
 
 .action-buttons {
   display: flex;
-  gap: 10px;
-  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
 }
 
-.clear-btn,
-.save-btn {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.clear-btn {
-  background: #f1f1f1;
-  color: #333;
-}
-
-.clear-btn:hover {
-  background: #e0e0e0;
-}
-
-.save-btn {
-  background: #667eea;
-  color: white;
+.action-buttons .glass-button,
+.action-buttons .glass-button-primary {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
 }
 
-.save-btn:hover {
-  background: #5568d3;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
-}
+/* ===== COLOR WARNING ===== */
 
 .color-warning {
-  background: #fff3cd;
-  color: #856404;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ffeaa7;
-  font-size: 0.9rem;
-  text-align: center;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: rgb(251, 191, 36);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  backdrop-filter: blur(10px);
 }
 
+/* ===== BRUSH SIZE SELECTOR ===== */
+
 .brush-size-selector {
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+.control-title {
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
 }
 
 .brush-size-options {
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 10px;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .brush-size-btn {
-  background: white;
-  border: 3px solid transparent;
-  padding: 10px;
-  border-radius: 8px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .brush-size-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .brush-size-btn.active {
-  border-color: #667eea;
-  box-shadow: 0 0 0 2px white, 0 0 0 4px #667eea;
+  border-color: var(--color-accent);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .brush-preview {
-  border: 1px solid #ddd;
-  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-base);
+}
+
+.brush-size-btn.active .brush-preview {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
 }
 
 .brush-info {
   text-align: center;
-  font-size: 0.9rem;
-  color: #555;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
   font-weight: 600;
 }

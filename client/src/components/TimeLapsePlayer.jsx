@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { X, Play, Pause, RotateCcw, Download, Timer } from 'lucide-react';
 import './TimeLapsePlayer.css';
 
 function TimeLapsePlayer({ history, onClose }) {
@@ -78,33 +80,45 @@ function TimeLapsePlayer({ history, onClose }) {
 
   if (!history || history.length === 0) {
     return (
-      <div className="timelapse-empty">
+      <motion.div
+        className="timelapse-empty glass-modal"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+      >
         <p>No history available yet. Start drawing to create a time-lapse!</p>
-        <button onClick={onClose}>Close</button>
-      </div>
+        <button className="glass-button" onClick={onClose}>Close</button>
+      </motion.div>
     );
   }
 
   return (
-    <div className="timelapse-player">
+    <motion.div
+      className="timelapse-player glass-modal"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.2 }}
+    >
       <div className="timelapse-header">
-        <h2>⏱️ Time-Lapse Player</h2>
-        <button className="close-btn" onClick={onClose}>×</button>
+        <h2>
+          <Timer size={20} />
+          <span>Time-Lapse Player</span>
+        </h2>
+        <button className="modal-close" onClick={onClose}>
+          <X size={18} />
+        </button>
       </div>
 
       <div className="timelapse-content">
-        <canvas
-          ref={canvasRef}
-          width={160}
-          height={160}
-          style={{
-            width: '480px',
-            height: '480px',
-            border: '3px solid #333',
-            imageRendering: 'pixelated',
-            borderRadius: '10px'
-          }}
-        />
+        <div className="canvas-wrapper">
+          <canvas
+            ref={canvasRef}
+            width={160}
+            height={160}
+            className="timelapse-canvas"
+          />
+        </div>
 
         <div className="timelapse-controls">
           <div className="progress-section">
@@ -123,14 +137,26 @@ function TimeLapsePlayer({ history, onClose }) {
           </div>
 
           <div className="playback-controls">
-            <button onClick={handleReset} className="control-btn">
-              ⏮️ Reset
+            <button onClick={handleReset} className="glass-button control-btn">
+              <RotateCcw size={16} />
+              <span>Reset</span>
             </button>
-            <button onClick={handlePlayPause} className="control-btn play-btn">
-              {isPlaying ? '⏸️ Pause' : '▶️ Play'}
+            <button onClick={handlePlayPause} className="glass-button-primary control-btn play-btn">
+              {isPlaying ? (
+                <>
+                  <Pause size={16} />
+                  <span>Pause</span>
+                </>
+              ) : (
+                <>
+                  <Play size={16} />
+                  <span>Play</span>
+                </>
+              )}
             </button>
-            <button onClick={exportFrame} className="control-btn">
-              💾 Export Frame
+            <button onClick={exportFrame} className="glass-button control-btn">
+              <Download size={16} />
+              <span>Export Frame</span>
             </button>
           </div>
 
@@ -163,7 +189,7 @@ function TimeLapsePlayer({ history, onClose }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
